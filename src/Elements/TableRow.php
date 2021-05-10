@@ -173,7 +173,7 @@ class TableRow extends HtmlEntity {
 
     if (!empty($this->cells)) {
       foreach ($this->cells as $key => $cell) {
-        $result['#cells'][$key] = $cell->toArray();
+        $result['cells'][$key] = $cell->toArray();
       }
     }
 
