@@ -14,21 +14,21 @@ class TableCell extends HtmlEntity {
   /**
    * Cell value.
    */
-  private ?string $value;
+  private ?string $value = null;
 
   /**
    * Raw content to prepend to value.
    * Use with care and not for user input!
    * This will not be auto-escaped!
    */
-  private string $beforeValueRaw;
+  private ?string $beforeValueRaw = null;
 
   /**
    * Raw content to append to value.
    * Use with care and not for user input!
    * This will not be auto-escaped!
    */
-  private string $afterValueRaw;
+  private ?string $afterValueRaw = null;
 
 
   public function __construct(string $key, ?string $value = null, ?HtmlAttributes $attributes = null) {
