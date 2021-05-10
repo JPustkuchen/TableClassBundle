@@ -1,6 +1,6 @@
 <?php
 
-namespace App\JPustkuchen\TableClassBundle;
+namespace JPustkuchen\JPustkuchenTableClassBundle\Elements;
 
 use HtmlAttributes;
 
@@ -14,8 +14,6 @@ abstract class HtmlEntity {
       $this->setAttributes(new HtmlAttributes());
     }
   }
-
-
 
   /**
    * Return attributes.
