@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services
         http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="tableclass.factory" id="JPustkuchen\TableClassBundle\TableFactory" public="true">
+        <service id="tableclass.factory" class="JPustkuchen\TableClassBundle\TableFactory" alias="JPustkuchen\TableClassBundle\TableFactory" public="true">
             <argument type="service" id="twig"/>
         </service>
     </services>
