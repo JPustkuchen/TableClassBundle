@@ -7,7 +7,12 @@ use JPustkuchen\TableClassBundle\Elements\TableRow;
 
 class TableFactory {
 
-    public static function createTable(?TableRow $header = null, array $rows = [], array $classes = [], array $attributes = []): Table {
+    public function __construct()
+    {
+
+    }
+
+    public function createTable(?TableRow $header = null, array $rows = [], array $classes = [], array $attributes = []): Table {
         return new Table($header, $rows, $classes, $attributes);
     }
 }
