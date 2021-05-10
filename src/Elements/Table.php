@@ -107,6 +107,16 @@ class Table extends HtmlEntity {
     }
 
     /**
+     * Run the given lambda function on all rows.
+     * Use with care!
+     *
+     * @param [type] $lambda
+     */
+    public function interateRows(callable $lambda){
+        $this->rows = array_map($lambda, $this->rows);
+    }
+
+    /**
      * Returns the array representation.
      *
      * @return array
