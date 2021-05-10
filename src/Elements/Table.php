@@ -10,6 +10,11 @@ use Twig\Environment;
 class Table extends HtmlEntity {
 
     /**
+     * Twig environment.
+     */
+    private Environment $twig;
+
+    /**
      * The table header row.
      */
     private TableRow $header;
