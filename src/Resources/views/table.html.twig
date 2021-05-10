@@ -3,7 +3,7 @@
 		{% block thead %}
 			<thead>
 				<tr {% if tabledata.header.attributes is defined and tabledata.header.attributes is not empty %} {{ tabledata.header.attributes }} {% endif %}>
-					{% for cell in tabledata.header %}
+					{% for cell in tabledata.header.cells %}
             {% block th %}
 						  <th>{{ cell.value }}</th>
             {% endblock %}
@@ -16,7 +16,7 @@
 				{% for row in tabledata.rows %}
 					{% block row %}
 						<tr {% if row.attributes is defined and row.attributes is not empty %} {{ row.attributes }} {% endif %}>
-							{% for cell in row %}
+							{% for cell in row.cells %}
 								{% block cell %}
 									<td {% if cell.attributes is defined and cell.attributes is not empty %} {{ cell.attributes }} {% endif %}>{{ cell.value }}</td>
 								{% endblock %}
