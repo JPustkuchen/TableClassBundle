@@ -121,7 +121,7 @@ class TableRow extends HtmlEntity {
    *
    * @param string] $key
    */
-  protected function getCellByKey(string $key): TableCell {
+  public function getCellByKey(string $key): TableCell {
     return $this->cellsByKey[$key];
   }
 
