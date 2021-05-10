@@ -1,6 +1,6 @@
 <?php
 
-namespace JPustkuchen\TableClassBundle;
+namespace JPustkuchen\TableClassBundle\DependencyInjection;
 
 use JPustkuchen\TableClassBundle\Elements\Table;
 use JPustkuchen\TableClassBundle\Elements\TableRow;
