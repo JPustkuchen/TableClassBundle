@@ -16,6 +16,21 @@ class TableCell extends HtmlEntity {
    */
   private ?string $value;
 
+  /**
+   * Raw content to prepend to value.
+   * Use with care and not for user input!
+   * This will not be auto-escaped!
+   */
+  private string $beforeValueRaw;
+
+  /**
+   * Raw content to append to value.
+   * Use with care and not for user input!
+   * This will not be auto-escaped!
+   */
+  private string $afterValueRaw;
+
+
   public function __construct(string $key, ?string $value = null, ?HtmlAttributes $attributes = null) {
     $this->key = $key;
     $this->value = $value;
@@ -67,9 +82,55 @@ class TableCell extends HtmlEntity {
     $result = [
       'key' => $this->key,
       'value' => $this->value,
+      'beforeValueRaw' => $this->beforeValueRaw,
+      'afterValueRaw' => $this->afterValueRaw,
       'attributes' => $this->getAttributes()->toString(),
     ];
 
     return $result;
+  }
+
+  /**
+   * Get raw content to append to value.
+   * Use with care and not for user input!
+   * This will not be auto-escaped!
+   */
+  public function getAfterValueRaw() {
+    return $this->afterValueRaw;
+  }
+
+  /**
+   * Set raw content to append to value.
+   * Use with care and not for user input!
+   * This will not be auto-escaped!
+   *
+   * @return  self
+   */
+  public function setAfterValueRaw($afterValueRaw) {
+    $this->afterValueRaw = $afterValueRaw;
+
+    return $this;
+  }
+
+  /**
+   * Get raw content to prepend to value.
+   * Use with care and not for user input!
+   * This will not be auto-escaped!
+   */
+  public function getBeforeValueRaw() {
+    return $this->beforeValueRaw;
+  }
+
+  /**
+   * Set raw content to prepend to value.
+   * Use with care and not for user input!
+   * This will not be auto-escaped!
+   *
+   * @return  self
+   */
+  public function setBeforeValueRaw($beforeValueRaw) {
+    $this->beforeValueRaw = $beforeValueRaw;
+
+    return $this;
   }
 }
