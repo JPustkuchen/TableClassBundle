@@ -4,7 +4,14 @@ namespace JPustkuchen\TableClassBundle\Elements;
 
 class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
 
-  private array $attributes;
+  /**
+   * Array of HTML Attributes in array structure.
+   */
+  private array $attributes = [];
+
+  /**
+   * Represents the HTML class attribute, which is treated as special case.
+   */
   const HTML_ATTRIBUTE_CLASS = 'class';
 
   /**
@@ -81,6 +88,22 @@ class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
   }
 
   /**
+   * Adds all classes from array.
+   *
+   * @param array $classes
+   * @return HtmlAttributes
+   */
+  public function addClassesFromArray(array $classes): HtmlAttributes{
+    if(!empty($classes)){
+      foreach($classes as $class){
+        $this->addClass($class);
+      }
+    }
+
+    return $this;
+  }
+
+  /**
    * Adds a class.
    *
    * @param string $class
@@ -92,7 +115,8 @@ class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
       $classes = [];
     }
     $classes[] = $class;
-    $this->setAttribute(self::HTML_ATTRIBUTE_CLASS, $classes);
+    $this->setAttribute(self::HTML_ATTRIBUTE_CLASS, array_unique($classes));
+
     return $this;
   }
 

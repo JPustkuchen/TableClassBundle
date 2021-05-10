@@ -20,18 +20,17 @@ class Table extends HtmlEntity {
     /**
      * Constructor.
      *
-     * @param TableRow $header
+     * @param TableRow|null $header
      * @param array $rows
-     * @param array $classes
-     * @param array $attributes
+     * @param HtmlAttributes|null $attributes
      */
-    public function __construct(?TableRow $header = null, array $rows = [], array $classes = [], array $attributes = []) {
+    public function __construct(?TableRow $header, array $rows = [], ?HtmlAttributes $attributes) {
         if ($header === null) {
             $header = new TableRow();
         }
         $this->setHeader($header);
         $this->setRows($rows);
-        parent::__construct($classes, $attributes);
+        parent::__construct($attributes);
     }
 
     /**
@@ -107,7 +106,7 @@ class Table extends HtmlEntity {
             '#header' => $this->header->toArray(),
             '#rows' => [],
             '#classes' => $this->classes,
-            '#attributes' => $this->attributes,
+            '#attributes' => $this->attributes->toArray(),
         ];
         if (!empty($this->rows)) {
             foreach ($this->rows as $row) {

@@ -16,10 +16,10 @@ class TableCell extends HtmlEntity {
    */
   private ?string $value;
 
-  public function __construct(string $key, ?string $value = null, array $classes = [], array $attributes = []) {
+  public function __construct(string $key, ?string $value, ?HtmlAttributes $attributes) {
     $this->key = $key;
     $this->value = $value;
-    parent::__construct($classes, $attributes);
+    parent::__construct($attributes);
   }
 
   /**

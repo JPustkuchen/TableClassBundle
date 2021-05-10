@@ -2,10 +2,11 @@
 
 namespace JPustkuchen\TableClassBundle\Elements;
 
-use HtmlAttributes;
-
 abstract class HtmlEntity {
-  private array $attributes;
+  /**
+   * The HTML Attributes object.
+   */
+  private HtmlAttributes $attributes;
 
   public function __construct(?HtmlAttributes $attributes) {
     if (!empty($attributes)) {
@@ -16,20 +17,58 @@ abstract class HtmlEntity {
   }
 
   /**
+   * Sets an attribute.
+   *
+   * @param string $name
+   * @param mixed] $value
+   * @return HtmlEntity
+   */
+  public function setAttribute(string $name, $value): HtmlEntity{
+    $this->getAttributes()->setAttribute($name, $value);
+
+    return $this;
+  }
+
+  /**
+   * Adds all classes from array.
+   *
+   * @param array $classes
+   * @return HtmlEntity
+   */
+  public function addClassesFromArray(array $classes): HtmlEntity{
+    $this->getAttributes()->addClassesFromArray($classes);
+
+    return $this;
+  }
+
+
+  /**
+   * Adds a class.
+   *
+   * @param string $class
+   * @return HtmlEntity
+   */
+  public function addClass(string $class): HtmlEntity {
+    $this->getAttributes()->addClass($class);
+
+    return $this;
+  }
+
+  /**
    * Return attributes.
    *
-   * @return array
+   * @return HtmlAttributes
    */
-  public function getAttributes(): array {
+  public function getAttributes(): HtmlAttributes {
     return $this->attributes;
   }
 
   /**
-   * Set the value of attributes
+   * Set attributes object.
    *
-   * @return  self
+   * @param HtmlAttributes $attributes
    */
-  protected function setAttributes($attributes) {
+  protected function setAttributes(HtmlAttributes $attributes): HtmlEntity {
     $this->attributes = $attributes;
 
     return $this;
