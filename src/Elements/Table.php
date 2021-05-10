@@ -115,7 +115,7 @@ class Table extends HtmlEntity {
         $result = [
             'header' => $this->header->toArray(),
             'rows' => [],
-            'attributes' => $this->getAttributes()->toArray(),
+            'attributes' => $this->getAttributes()->toString(),
         ];
         if (!empty($this->rows)) {
             foreach ($this->rows as $row) {
