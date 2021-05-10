@@ -1,0 +1,30 @@
+{% block table %}
+	<table {% if tabledata.attributes is defined and tabledata.attributes is not empty %} {{ tabledata.attributes }} {% endif %}>
+		{% block thead %}
+			<thead>
+				<tr {% if tabledata.header.attributes is defined and tabledata.header.attributes is not empty %} {{ tabledata.header.attributes }} {% endif %}>
+					{% for cell in tabledata.header %}
+            {% block th %}
+						  <th>{{ cell.value }}</th>
+            {% endblock %}
+					{% endfor %}
+				</tr>
+			</thead>
+		{% endblock %}
+		{% block tbody %}
+			<tbody>
+				{% for row in tabledata.rows %}
+					{% block row %}
+						<tr {% if row.attributes is defined and row.attributes is not empty %} {{ row.attributes }} {% endif %}>
+							{% for cell in row %}
+								{% block cell %}
+									<td {% if cell.attributes is defined and cell.attributes is not empty %} {{ cell.attributes }} {% endif %}>{{ cell.value }}</td>
+								{% endblock %}
+							{% endfor %}
+						</tr>
+					{% endblock %}
+				{% endfor %}
+			</tbody>
+		{% endblock %}
+	</table>
+{% endblock %}
