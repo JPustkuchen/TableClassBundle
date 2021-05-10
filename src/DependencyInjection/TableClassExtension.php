@@ -11,7 +11,9 @@ class TableClassExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-      $loader = new XmlFileLoader($container, new FileLocator(dirname(__DIR__).'/Resources/config'));
-      $loader->load('services.xml');
+      // $loader = new XmlFileLoader($container, new FileLocator(dirname(__DIR__).'/Resources/config'));
+      // $loader->load('services.xml');
+      $containerBuilder->register('tableclass.factory', JPustkuchen\TableClassBundle\TableFactory::class)
+      ->addArgument('%twig%');
     }
 }
