@@ -67,7 +67,7 @@ class TableCell extends HtmlEntity {
     $result = [
       'key' => $this->key,
       'value' => $this->value,
-      'attributes' => $this->getAttributes()->toArray(),
+      'attributes' => $this->getAttributes()->toString(),
     ];
 
     return $result;
