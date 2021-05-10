@@ -4,14 +4,14 @@
 			<thead>
         {% block thead_row %}
           <tr {% if tabledata.header.attributes is defined and tabledata.header.attributes is not empty %} {{ tabledata.header.attributes|raw }} {% endif %}>
-            {% block thead_row_inner_start %}
+            {% block thead_row_inner_before %}
             {% endblock %}
             {% for cell in tabledata.header.cells %}
               {% block thead_th %}
-                <th>{{ cell.value }}</th>
+                <th>{{ cell.beforeValueRaw|raw }}{{ cell.value }}{{ cell.afterValueRaw|raw }}</th>
               {% endblock %}
             {% endfor %}
-            {% block head_row_inner_end %}
+            {% block head_row_inner_after %}
             {% endblock %}
           </tr>
         {% endblock %}
@@ -23,16 +23,16 @@
           {% for row in tabledata.rows %}
             {% block tbody_row %}
               <tr {% if row.attributes is defined and row.attributes is not empty %} {{ row.attributes|raw }} {% endif %}>
-                {% block tbody_row_inner_start %}
+                {% block tbody_row_inner_before %}
                 {% endblock %}
                 {% for cell in row.cells %}
                   {% block tbody_td %}
                     <td {% if cell.attributes is defined and cell.attributes is not empty %} {{ cell.attributes|raw }} {% endif %}>
-                      {{ cell.value }}
+                      {{ cell.beforeValueRaw|raw }}{{ cell.value }}{{ cell.afterValueRaw|raw }}
                     </td>
                   {% endblock %}
                 {% endfor %}
-                {% block body_row_inner_end %}
+                {% block tbody_row_inner_after %}
                 {% endblock %}
               </tr>
             {% endblock %}
