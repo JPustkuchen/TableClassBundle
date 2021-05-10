@@ -15,6 +15,6 @@ class JPustkuchenTableClassExtension extends Extension
       $loader->load('services.xml');
       // $containerBuilder->register('tableclass.factory', JPustkuchen\TableClassBundle\TableFactory::class)
       // ->addArgument('%twig%');
-      // exit('!!!');
+      exit('!!!');
     }
 }
