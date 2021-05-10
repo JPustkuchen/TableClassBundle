@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\HelloBundle\DependencyInjection;
+namespace JPustkuchen\TableClassBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
