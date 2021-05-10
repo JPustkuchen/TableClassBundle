@@ -2,6 +2,8 @@
 
 namespace JPustkuchen\TableClassBundle\Elements;
 
+use Twig\Environment;
+
 /**
  * Reprecents a (vertical) HTML Table.
  */
@@ -20,11 +22,13 @@ class Table extends HtmlEntity {
     /**
      * Constructor.
      *
+     * @param Environment $twig
      * @param TableRow|null $header
      * @param array $rows
      * @param HtmlAttributes|null $attributes
      */
-    public function __construct(?TableRow $header = null, array $rows = [], ?HtmlAttributes $attributes = null) {
+    public function __construct(Environment $twig, ?TableRow $header = null, array $rows = [], ?HtmlAttributes $attributes = null) {
+        $this->twig = $twig;
         if ($header === null) {
             $header = new TableRow();
         }
@@ -114,5 +118,12 @@ class Table extends HtmlEntity {
             }
         }
         return $result;
+    }
+
+    /**
+     * Returns the rendered
+     */
+    public function render(){
+        return $this->twig->render('Elements/table.html.twig');
     }
 }
