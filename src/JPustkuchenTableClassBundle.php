@@ -1,6 +1,6 @@
 <?php
 
-namespace JPustkuchen\JPustkuchenTableClassBundle;
+namespace JPustkuchen\TableClassBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

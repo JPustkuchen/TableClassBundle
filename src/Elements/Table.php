@@ -1,6 +1,6 @@
 <?php
 
-namespace JPustkuchen\JPustkuchenTableClassBundle\Elements;
+namespace JPustkuchen\TableClassBundle\Elements;
 
 /**
  * Reprecents a (vertical) HTML Table.

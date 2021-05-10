@@ -12,7 +12,7 @@
       }
   ],
   "support": {
-    "issues": "https://github.com/jpustkuchen/tableclass-bundle/issues"
+    "issues": "https://github.com/jpustkuchen/TableClassBundle/issues"
   },
   "require": {
       "php": ">=7.3",
@@ -31,7 +31,7 @@
       "symfony/twig-bundle": "To use default Twig based rendering and TwigColumn"
   },
   "autoload": {
-      "psr-4": { "JPustkuchen\\TableClassBundle\\": "src/"}
+      "psr-4": { "JPustkuchen\\JPustkuchenTableClassBundle\\": "src/"}
   },
   "autoload-dev": {
       "psr-4": { "Tests\\": "tests/"}

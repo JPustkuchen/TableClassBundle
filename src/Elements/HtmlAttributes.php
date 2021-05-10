@@ -1,6 +1,6 @@
 <?php
 
-namespace JPustkuchen\JPustkuchenTableClassBundle\Elements;
+namespace JPustkuchen\TableClassBundle\Elements;
 
 class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
 
