@@ -159,9 +159,9 @@ class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
       if (is_bool($value)) {
         if ($value) $string .= $name . ' ';
       } elseif (is_array($value)) {
-        $string .= sprintf('%s="%s"', $name, implode(' ', $value));
+        $string .= sprintf('%s="%s"', $name, implode(' ', $value)) . ' ';
       } else {
-        $string .= sprintf('%s="%s"', $name, $value);
+        $string .= sprintf('%s="%s"', $name, $value) . ' ';
       }
     }
     return $string;
