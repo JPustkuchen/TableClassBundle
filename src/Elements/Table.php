@@ -112,7 +112,7 @@ class Table extends HtmlEntity {
      *
      * @param [type] $lambda
      */
-    public function interateRows(callable $lambda){
+    public function iterateRows(callable $lambda){
         $this->rows = array_map($lambda, $this->rows);
     }
 
