@@ -167,9 +167,9 @@ class TableRow extends HtmlEntity {
    * @param [type] $lambda
    */
   public function iterateCells(callable $lambda) {
-    foreach($this->cells as $index => $cell){
+    foreach ($this->cells as $index => $cell) {
       $this->cells[$index] = $lambda($cell, $index);
-  }
+    }
   }
 
   /**

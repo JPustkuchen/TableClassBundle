@@ -1,13 +1,17 @@
 {% block table %}
-	<table {% if tabledata.attributes is defined and tabledata.attributes is not empty %} {{ tabledata.attributes }} {% endif %}>
+	<table {% if tabledata.attributes is defined and tabledata.attributes is not empty %} {{ tabledata.attributes|raw }} {% endif %}>
 		{% block thead %}
 			<thead>
-				<tr {% if tabledata.header.attributes is defined and tabledata.header.attributes is not empty %} {{ tabledata.header.attributes }} {% endif %}>
+				<tr {% if tabledata.header.attributes is defined and tabledata.header.attributes is not empty %} {{ tabledata.header.attributes|raw }} {% endif %}>
+          {% block head_row_start %}
+          {% endblock %}
 					{% for cell in tabledata.header.cells %}
             {% block th %}
 						  <th>{{ cell.value }}</th>
             {% endblock %}
 					{% endfor %}
+          {% block head_row_end %}
+          {% endblock %}
 				</tr>
 			</thead>
 		{% endblock %}
@@ -15,12 +19,18 @@
 			<tbody>
 				{% for row in tabledata.rows %}
 					{% block row %}
-						<tr {% if row.attributes is defined and row.attributes is not empty %} {{ row.attributes }} {% endif %}>
+						<tr {% if row.attributes is defined and row.attributes is not empty %} {{ row.attributes|raw }} {% endif %}>
+              {% block row_start %}
+              {% endblock %}
 							{% for cell in row.cells %}
-								{% block cell %}
-									<td {% if cell.attributes is defined and cell.attributes is not empty %} {{ cell.attributes }} {% endif %}>{{ cell.value }}</td>
+								{% block td %}
+									<td {% if cell.attributes is defined and cell.attributes is not empty %} {{ cell.attributes|raw }} {% endif %}>
+                    {{ cell.value }}
+                  </td>
 								{% endblock %}
 							{% endfor %}
+              {% block row_end %}
+              {% endblock %}
 						</tr>
 					{% endblock %}
 				{% endfor %}
