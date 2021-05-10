@@ -24,7 +24,7 @@ class Table extends HtmlEntity {
      * @param array $rows
      * @param HtmlAttributes|null $attributes
      */
-    public function __construct(?TableRow $header, array $rows = [], ?HtmlAttributes $attributes) {
+    public function __construct(?TableRow $header = null, array $rows = [], ?HtmlAttributes $attributes = null) {
         if ($header === null) {
             $header = new TableRow();
         }

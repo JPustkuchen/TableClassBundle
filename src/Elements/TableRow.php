@@ -50,7 +50,7 @@ class TableRow extends HtmlEntity {
    * @param array $classes
    * @param array $attributes
    */
-  public function __construct(array $cells = [], ?HtmlAttributes $attributes) {
+  public function __construct(array $cells = [], ?HtmlAttributes $attributes = null) {
     $this->setCells($cells);
     parent::__construct($attributes);
   }

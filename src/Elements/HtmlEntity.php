@@ -8,7 +8,7 @@ abstract class HtmlEntity {
    */
   private HtmlAttributes $attributes;
 
-  public function __construct(?HtmlAttributes $attributes) {
+  public function __construct(?HtmlAttributes $attributes = null) {
     if (!empty($attributes)) {
       $this->setAttributes($attributes);
     } else {

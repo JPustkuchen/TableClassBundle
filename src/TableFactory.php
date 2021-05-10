@@ -13,7 +13,7 @@ class TableFactory {
 
     }
 
-    public function createTable(?TableRow $header, array $rows = [], ?HtmlAttributes $attributes): Table {
+    public function createTable(?TableRow $header = null, array $rows = [], ?HtmlAttributes $attributes = null): Table {
         return new Table($header, $rows, $attributes);
     }
 }

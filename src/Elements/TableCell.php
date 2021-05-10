@@ -16,7 +16,7 @@ class TableCell extends HtmlEntity {
    */
   private ?string $value;
 
-  public function __construct(string $key, ?string $value, ?HtmlAttributes $attributes) {
+  public function __construct(string $key, ?string $value = null, ?HtmlAttributes $attributes = null) {
     $this->key = $key;
     $this->value = $value;
     parent::__construct($attributes);
