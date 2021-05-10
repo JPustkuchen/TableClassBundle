@@ -119,7 +119,7 @@ class Table extends HtmlEntity {
         ];
         if (!empty($this->rows)) {
             foreach ($this->rows as $row) {
-                $result['#rows'][] = $row->toArray();
+                $result['rows'][] = $row->toArray();
             }
         }
         return $result;
