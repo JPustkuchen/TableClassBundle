@@ -180,12 +180,19 @@ class TableRow extends HtmlEntity {
   public function toArray(): array {
     $result = [
       'cells' => [], // Filled below.
+      'cellsByKey' => [], // Filled below.
       'attributes' => $this->getAttributes()->toString(),
     ];
 
     if (!empty($this->cells)) {
       foreach ($this->cells as $key => $cell) {
         $result['cells'][$key] = $cell->toArray();
+      }
+    }
+
+    if (!empty($this->cellsByKey)) {
+      foreach ($this->cellsByKey as $key => $cell) {
+        $result['cellsByKey'][$key] = $cell->toArray();
       }
     }
 
