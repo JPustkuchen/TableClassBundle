@@ -113,9 +113,9 @@ class Table extends HtmlEntity {
      */
     public function toArray(): array {
         $result = [
-            '#header' => $this->header->toArray(),
-            '#rows' => [],
-            '#attributes' => $this->getAttributes()->toArray(),
+            'header' => $this->header->toArray(),
+            'rows' => [],
+            'attributes' => $this->getAttributes()->toArray(),
         ];
         if (!empty($this->rows)) {
             foreach ($this->rows as $row) {
