@@ -96,6 +96,7 @@ class Table extends HtmlEntity {
         }
         return $this;
     }
+
     /**
      * Returns the array representation.
      *
@@ -105,8 +106,7 @@ class Table extends HtmlEntity {
         $result = [
             '#header' => $this->header->toArray(),
             '#rows' => [],
-            '#classes' => $this->classes,
-            '#attributes' => $this->attributes->toArray(),
+            '#attributes' => $this->getAttributes()->toArray(),
         ];
         if (!empty($this->rows)) {
             foreach ($this->rows as $row) {

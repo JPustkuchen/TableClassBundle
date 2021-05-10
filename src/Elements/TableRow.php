@@ -168,8 +168,7 @@ class TableRow extends HtmlEntity {
   public function toArray(): array {
     $result = [
       '#cells' => [],
-      '#classes' => $this->getClasses(),
-      '#attributes' => $this->getAttributes(),
+      '#attributes' => $this->getAttributes()->toArray(),
     ];
 
     if (!empty($this->cells)) {
