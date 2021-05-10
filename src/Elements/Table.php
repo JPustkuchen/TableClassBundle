@@ -129,6 +129,8 @@ class Table extends HtmlEntity {
      * Returns the rendered
      */
     public function render(){
-        return $this->twig->render('@JPustkuchenTableClass/Elements/table.html.twig');
+        return $this->twig->render('@JPustkuchenTableClass/Elements/table.html.twig', [
+            'tabledata' => $this->toArray()
+        ]);
     }
 }
