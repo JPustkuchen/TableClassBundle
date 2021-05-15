@@ -97,7 +97,8 @@ See example above!
 
 **Until that you'll have to copy the table.html.twig template from the bundle into your templates directory and use that to render the table by Twig include!**
 
-#### Optional: Use with DataTables.js
+
+### OPTIONAL: Use with DataTables.net
 
 Simply require datatables.net, for example by:
 ~~~
