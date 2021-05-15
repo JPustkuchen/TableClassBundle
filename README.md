@@ -118,15 +118,13 @@ window.$.DataTable = dt;
 window.dt = dt;
 ~~~
 
-Then you'll have to wrap the table.html.twig in a parent twig file containing the datatables.net initialisation, for example like this (or any other way):
+Then you'll could for example wrap the bundles *table.html.twig* in a parent twig file containing the DataTables.net initialisation, for example like this (or any other way):
 ```php
-{# prettier-ignore-start #}
 <script>
   $( document ).ready(function() {
     $('#' + '{{id|default('datatable')|escape('html_attr')}}').DataTable({/* Optional datatables.net Options */});
   });
 </script>
-{# prettier-ignore-end #}
 <div id="{{ id|default('datatable')|escape('html_attr') }}-wrapper" class="datatable-wrapper">
   {% include 'table.html.twig' %}
 </div>
