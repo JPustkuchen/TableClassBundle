@@ -18,19 +18,21 @@ class TsfAgDefaultController extends AbstractController
           ['col1' => 'Row 2 Cell 1 Value', 'col2' => 'Row 2 Cell 2 Value'],
           // ...
         ];
+        
         // TableFactory via dependency injection
         $tableMain = $tableFactory->createTable()
-        // Set DataTable classes (optional - just as example)
+          // Set DataTable classes (optional - just as example)
           ->addClassesFromArray(['ui', 'selectable', 'celled', 'striped', 'stackable', 'table'])
           ->setHeaderFromArray([
             'col1' => 'Col 1 Header Label',
             'col2' => 'Col 2 Header Label',
             'tableActions' => 'Actions Example Row',
           ])->addRowsFromArray($results);
+          // Alternatively you could also add rows and cols manually by ->addRow() or ->addColumn().
 
         // Iterate rows for actions on the data:
         $tableMain->iterateRows(function (TableRow $row, $index) {
-          // Mark red if condition $y
+          // Add classes based on cell values:
           $cellRow1 = $row->getCellbyKey('row1');
           $cellRow1Value = $cellRow1->getValue();
           if ($y) {
