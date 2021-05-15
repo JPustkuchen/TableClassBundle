@@ -1,3 +1,6 @@
+Symfony (5) Bundle to represent a HTML Table as Class with Header, Rows and the possibility to set Attributes (& classes especially) on all elements in PHP Code.
+Helpful especially to use with DataTables
+
 # Installation
 
 Make sure Composer is installed globally, as explained in the
