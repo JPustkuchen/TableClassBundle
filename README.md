@@ -1,5 +1,7 @@
 Symfony (5) Bundle to represent a HTML Table as Class with Header, Rows and the possibility to set Attributes (& classes especially) on all elements in PHP Code.
-Helpful especially to use with DataTables
+Helpful especially to use with [DataTables](https://datatables.net/), but completely flexible and not bound to that context. To use in combination with DataTables, set the required classes and require [DataTables](https://datatables.net/) yourself. NOT included in this bundle!
+
+The contained table.html.twig file is highly customizable by using blocks extensively.
 
 # Example (in Symfony Controller)
 ```php
@@ -11,13 +13,18 @@ class TsfAgDefaultController extends AbstractController
 {
   public function indexAction(Request $request, TableFactory $tableFactory): Response
   {
-        $results = [/* Your database query results or custom array as keyed array*/]
+        $results = [/* Your database query results or custom array as keyed array with row keys as value keys */
+          ['col1' => 'Row 1 Cell 1 Value', 'col2' => 'Row 1 Cell 2 Value'],
+          ['col1' => 'Row 2 Cell 1 Value', 'col2' => 'Row 2 Cell 2 Value'],
+          // ...
+        ];
+        // TableFactory via dependency injection
         $tableMain = $tableFactory->createTable()
         // Set DataTable classes (optional - just as example)
           ->addClassesFromArray(['ui', 'selectable', 'celled', 'striped', 'stackable', 'table'])
           ->setHeaderFromArray([
-            'row1' => 'Row 1 Label',
-            'row2' => 'Row 2 Label',
+            'col1' => 'Col 1 Header Label',
+            'col2' => 'Col 2 Header Label',
             'tableActions' => 'Actions Example Row',
           ])->addRowsFromArray($results);
 
@@ -89,3 +96,31 @@ See example above!
 *Important: The built-in ->render() function doesn't work yet, if someone knows what's missing in the bundle to make Symfony Twig render the template, please help. Currently the bundles template / view directory isn't considered by Twig as it seems?!*
 
 **Until that you'll have to copy the table.html.twig template from the bundle into your templates directory and use that to render the table by Twig include!**
+
+#### Optional: Use with DataTables.js
+
+Simply require datatables.net, for example by:
+~~~
+npm install datatables.net
+~~~
+
+And require it in your app.js, for example like this:
+~~~
+const dt = require('datatables.net');
+window.$.DataTable = dt;
+window.dt = dt;
+~~~
+
+Then you'll have to wrap the table.html.twig in a parent twig file containing the datatables.net initialisation, for example like this (or any other way):
+```php
+{# prettier-ignore-start #}
+<script>
+  $( document ).ready(function() {
+    $('#' + '{{id|default('datatable')|escape('html_attr')}}').DataTable({/* Optional datatables.net Options */});
+  });
+</script>
+{# prettier-ignore-end #}
+<div id="{{ id|default('datatable')|escape('html_attr') }}-wrapper">
+  {% include 'table.html.twig' %}
+</div>
+```
