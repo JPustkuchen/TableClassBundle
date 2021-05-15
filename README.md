@@ -1,7 +1,8 @@
-Symfony (5) Bundle to represent a HTML Table as Class with Header, Rows and the possibility to set Attributes (& classes especially) on all elements in PHP Code.
-Helpful especially to use with [DataTables](https://datatables.net/), but completely flexible and not bound to that context. To use in combination with DataTables, set the required classes and require [DataTables](https://datatables.net/) yourself. NOT included in this bundle!
+**Symfony (5) Bundle to represent a HTML Table as Object structure of typical elements like Header, Rows, Cells and the possibility to set Attributes (& classes especially) on all elements in PHP Code.**
 
-The contained table.html.twig file is highly customizable by using blocks extensively.
+Helpful especially in combination with [DataTables](https://datatables.net/), but completely flexible and not bound to that context. To use in combination with DataTables, set the required classes and require [DataTables](https://datatables.net/) yourself. NOT included in this bundle!
+If you'd like to use AJAXified DataTables with Symfony, have a look at: https://github.com/omines/datatables-bundle
+I didn't need that complexity and missed some flexibility instead, which lead me to this project.
 
 # Example (in Symfony Controller)
 ```php
@@ -95,11 +96,13 @@ return [
 
 ### Step 2: Use where you need it, for example in a Controller to create and render a table
 
-See example above!
+**See example above!**
+
 *Important: The built-in ->render() function doesn't work yet, if someone knows what's missing in the bundle to make Symfony Twig render the template, please help. Currently the bundles template / view directory isn't considered by Twig as it seems?!*
 
 **Until that you'll have to copy the table.html.twig template from the bundle into your templates directory and use that to render the table by Twig include!**
 
+The contained **table.html.twig** file is highly customizable by using blocks extensively.
 
 ### OPTIONAL: Use with DataTables.net
 
