@@ -46,7 +46,8 @@ class TsfAgDefaultController extends AbstractController
           return $row;
         });
 
-        return $this->render('yourTwigTemplate.twig', [
+        // The contained table.html.twig expects the table array structure in the key 'tabledata':
+        return $this->render('table.html.twig', [
           'tabledata' => $tableMain->toArray(),
         ]);
     }
@@ -123,7 +124,8 @@ Then you'll have to wrap the table.html.twig in a parent twig file containing th
   });
 </script>
 {# prettier-ignore-end #}
-<div id="{{ id|default('datatable')|escape('html_attr') }}-wrapper">
+<div id="{{ id|default('datatable')|escape('html_attr') }}-wrapper" class="datatable-wrapper">
   {% include 'table.html.twig' %}
 </div>
 ```
+In our example we additionally used a table wrapper element, for more flexibility, for example to use scrolling tables, if needed. This part is also optional.
