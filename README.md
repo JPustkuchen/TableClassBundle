@@ -11,7 +11,7 @@ class TsfAgDefaultController extends AbstractController
 {
   public function indexAction(Request $request, TableFactory $tableFactory): Response
   {
-        $results = [/* Your database query results as keyed array*/]
+        $results = [/* Your database query results or custom array as keyed array*/]
         $tableMain = $tableFactory->createTable()
         // Set DataTable classes (optional - just as example)
           ->addClassesFromArray(['ui', 'selectable', 'celled', 'striped', 'stackable', 'table'])
