@@ -157,7 +157,6 @@ class Table extends HtmlEntity {
      */
     public function removeHeaderlessColumns(): Table {
         $cellKeys = $this->header->getCellKeys();
-        $removedColumns = [];
         if (!empty($this->rows) && !empty($cellKeys)) {
             foreach ($this->rows as $row) {
                 $cells = $row->getCells();
@@ -165,7 +164,34 @@ class Table extends HtmlEntity {
                     $cellKey = $cell->getKey();
                     if (!in_array($cellKey, $cellKeys)) {
                         $row->removeCell($cellKey);
-                        $removedColumns[$cellKey] = $cellKey;
+                    }
+                }
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * Helper function to hide headerless columns from all rows in twig output.
+     * You may for example find this useful when using
+     * setHeaderFromArray() + addRowsFromArray() with different array sizes.
+     *
+     * Only useful if header was set before.
+     *
+     * This
+     * @param stromg $class The class name to hide the cell.
+     * @return Table
+     */
+    public function hideHeaderlessColumns($class = 'hidden'): Table {
+        $cellKeys = $this->header->getCellKeys();
+        $removedColumns = [];
+        if (!empty($this->rows) && !empty($cellKeys)) {
+            foreach ($this->rows as $row) {
+                $cells = $row->getCells();
+                foreach ($cells as $cell) {
+                    $cellKey = $cell->getKey();
+                    if (!in_array($cellKey, $cellKeys)) {
+                        $cell->addClass($class);
                     }
                 }
             }
