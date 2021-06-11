@@ -148,7 +148,7 @@ class TableRow extends HtmlEntity {
    * Returns an array of all cell keys.
    */
   public function getCellKeys(): array {
-    return array_keys($this->cells);
+    return array_keys($this->cellsByKey);
   }
 
   /**
