@@ -112,8 +112,8 @@ class Table extends HtmlEntity {
      *
      * @param [type] $lambda
      */
-    public function iterateRows(callable $lambda){
-        foreach($this->rows as $index => $row){
+    public function iterateRows(callable $lambda) {
+        foreach ($this->rows as $index => $row) {
             $this->rows[$index] = $lambda($row, $index);
         }
     }
@@ -140,9 +140,36 @@ class Table extends HtmlEntity {
     /**
      * Returns the rendered
      */
-    public function render(){
+    public function render() {
         return $this->twig->render('@JPustkuchenTableClass/table.html.twig', [
             'tabledata' => $this->toArray()
         ]);
+    }
+
+    /**
+     * Helper function to remove headerless columns from all rows.
+     * You may for example find this useful when using
+     * setHeaderFromArray() + addRowsFromArray() with different array sizes.
+     *
+     * Only useful if header was set before.
+     *
+     * @return array List of all removed headerless column keys.
+     */
+    public function removeHeaderlessColumns() {
+        $cellKeys = $this->header->getCellKeys();
+        $removedColumns = [];
+        if (!empty($this->rows) && !empty($cellKeys)) {
+            foreach ($this->rows as $row) {
+                $cells = $row->getCells();
+                foreach ($cells as $cell) {
+                    $cellKey = $cell->getKey();
+                    if (!in_array($cellKey, $cellKeys)) {
+                        $row->removeCell($cellKey);
+                        $removedColumns[$cellKey] = $cellKey;
+                    }
+                }
+            }
+        }
+        return $removedColumns;
     }
 }
