@@ -153,9 +153,9 @@ class Table extends HtmlEntity {
      *
      * Only useful if header was set before.
      *
-     * @return array List of all removed headerless column keys.
+     * @return Table
      */
-    public function removeHeaderlessColumns() {
+    public function removeHeaderlessColumns(): Table {
         $cellKeys = $this->header->getCellKeys();
         $removedColumns = [];
         if (!empty($this->rows) && !empty($cellKeys)) {
@@ -170,6 +170,6 @@ class Table extends HtmlEntity {
                 }
             }
         }
-        return $removedColumns;
+        return $this;
     }
 }
