@@ -172,4 +172,24 @@ class Table extends HtmlEntity {
         }
         return $this;
     }
+
+    /**
+     * Get the table header row.
+     *
+     * @return TableRow
+     */
+    public function getHeader(): TableRow
+    {
+        return $this->header;
+    }
+
+    /**
+     * Get all further rows.
+     *
+     * @return array
+     */
+    public function getRows(): array
+    {
+        return $this->rows;
+    }
 }
