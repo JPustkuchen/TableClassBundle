@@ -31,6 +31,10 @@ class TableRow extends HtmlEntity {
         if (!is_array($cell)) {
           // No array, use value as value:
           $cells[] = new TableCell($key, $cell);
+          // TODO - Dirty workarund to hide empty (null) values and headers
+          if($cell === null){
+            $cell->addClass('hidden');
+          }
         } else {
           // Array value, use by keys:
           $value = $cell['#value'];

@@ -184,7 +184,6 @@ class Table extends HtmlEntity {
      */
     public function hideHeaderlessColumns($class = 'hidden'): Table {
         $cellKeys = $this->header->getCellKeys();
-        $removedColumns = [];
         if (!empty($this->rows) && !empty($cellKeys)) {
             foreach ($this->rows as $row) {
                 $cells = $row->getCells();
