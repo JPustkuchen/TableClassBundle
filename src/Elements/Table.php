@@ -49,7 +49,13 @@ class Table extends HtmlEntity {
      * @return Table
      */
     public function setHeaderFromArray(array $headerArray): Table {
-        $this->setHeader(TableRow::createFromArray($headerArray));
+        $headerTableRow = TableRow::createFromArray($headerArray);
+        $headerTableRow->iterateCells(function (TableCell $cell, $index) {
+            if ($cell->getValue() === null) {
+                $cell->setHidden(true);
+            }
+        });
+        $this->setHeader($headerTableRow);
         return $this;
     }
 
@@ -204,8 +210,7 @@ class Table extends HtmlEntity {
      *
      * @return TableRow
      */
-    public function getHeader(): TableRow
-    {
+    public function getHeader(): TableRow {
         return $this->header;
     }
 
@@ -214,8 +219,7 @@ class Table extends HtmlEntity {
      *
      * @return array
      */
-    public function getRows(): array
-    {
+    public function getRows(): array {
         return $this->rows;
     }
 }
