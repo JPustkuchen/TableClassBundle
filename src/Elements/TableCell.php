@@ -88,6 +88,12 @@ class TableCell extends HtmlEntity {
    * @return array
    */
   public function toArray() {
+    // TODO - make class changable from outside:
+    if($this->hidden){
+      // Add class 'hidden' if this is hidden:
+      $this->getAttributes()->addClass('hidden');
+    }
+
     $result = [
       'key' => $this->key,
       'value' => $this->value,
