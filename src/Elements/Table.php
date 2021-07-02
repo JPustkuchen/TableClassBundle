@@ -55,6 +55,7 @@ class Table extends HtmlEntity {
             if ($cell->getValue() === null) {
                 $cell->setHidden(true);
             }
+            return $cell;
         });
         $this->setHeader($headerTableRow);
         return $this;
