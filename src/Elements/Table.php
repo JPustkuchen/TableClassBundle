@@ -50,6 +50,7 @@ class Table extends HtmlEntity {
      */
     public function setHeaderFromArray(array $headerArray): Table {
         $headerTableRow = TableRow::createFromArray($headerArray);
+        // Hide rows with empty title (===null)
         $headerTableRow->iterateCells(function (TableCell $cell, $index) {
             if ($cell->getValue() === null) {
                 $cell->setHidden(true);
