@@ -32,7 +32,7 @@ class TableRow extends HtmlEntity {
           // No array, use value as value:
           $tableCell = new TableCell($key, $cell);
           // TODO - Dirty workarund to hide empty (null) values and headers
-          if($cell === null){
+          if ($cell === null) {
             $tableCell->setHidden(true);
           }
           $cells[] = $tableCell;
@@ -149,27 +149,27 @@ class TableRow extends HtmlEntity {
     return isset($this->cells[$key]);
   }
 
- /**
-  * Returns an array of all cell keys.
-  *
-  * @param bool $excludeHidden Exclude cell keys from hidden cells
-  * @return array
-  */
+  /**
+   * Returns an array of all cell keys.
+   *
+   * @param bool $excludeHidden Exclude cell keys from hidden cells
+   * @return array
+   */
   public function getCellKeys($excludeHidden = false): array {
-    if($excludeHidden){
+    if ($excludeHidden) {
       // Only return non-empty cells:
       $result = [];
-      if(!empty($this->cellsByKey)){
-        foreach($this->cellsByKey as $key => $cell){
-          if(!$cell->isHidden()){
+      if (!empty($this->cellsByKey)) {
+        foreach ($this->cellsByKey as $key => $cell) {
+          if (!$cell->isHidden()) {
             $result[] = $key;
           }
         }
       }
+      return $result;
     } else {
       return array_keys($this->cellsByKey);
     }
-
   }
 
   /**
