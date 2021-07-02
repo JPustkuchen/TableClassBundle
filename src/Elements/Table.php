@@ -183,7 +183,8 @@ class Table extends HtmlEntity {
      * @return Table
      */
     public function hideHeaderlessColumns(): Table {
-        $cellKeys = $this->header->getCellKeys();
+        // Exclude hidden (value === null) header cells.
+        $cellKeys = $this->header->getCellKeys(true);
         if (!empty($this->rows) && !empty($cellKeys)) {
             foreach ($this->rows as $row) {
                 $cells = $row->getCells();

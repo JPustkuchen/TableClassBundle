@@ -149,20 +149,38 @@ class TableRow extends HtmlEntity {
     return isset($this->cells[$key]);
   }
 
-  /**
-   * Returns an array of all cell keys.
-   */
-  public function getCellKeys(): array {
-    return array_keys($this->cellsByKey);
+ /**
+  * Returns an array of all cell keys.
+  *
+  * @param bool $excludeHidden Exclude cell keys from hidden cells
+  * @return array
+  */
+  public function getCellKeys($excludeHidden = false): array {
+    if($excludeHidden){
+      // Only return non-empty cells:
+      $result = [];
+      if(!empty($this->cellsByKey)){
+        foreach($this->cellsByKey as $key => $cell){
+          if(!$cell->isHidden()){
+            $result[] = $key;
+          }
+        }
+      }
+    } else {
+      return array_keys($this->cellsByKey);
+    }
+
   }
 
   /**
    * Returns the amount of cells in this row.
    *
+   * @param bool $excludeHidden Exclude hidden cells.
    * @return int
    */
-  public function getCellCount(): int {
-    return count($this->cells);
+  public function getCellCount($excludeHidden = false): int {
+    $cellKeys = $this->getCellKeys($excludeHidden);
+    return count($cellKeys);
   }
 
   /**

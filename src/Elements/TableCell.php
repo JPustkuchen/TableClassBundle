@@ -161,4 +161,14 @@ class TableCell extends HtmlEntity {
 
     return $this;
   }
+
+  /**
+   * Get data purposes.
+   *
+   * @return  bool
+   */
+  public function isHidden()
+  {
+    return $this->hidden;
+  }
 }
