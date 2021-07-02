@@ -30,11 +30,12 @@ class TableRow extends HtmlEntity {
       foreach ($cellsArray as $key => $cell) {
         if (!is_array($cell)) {
           // No array, use value as value:
-          $cells[] = new TableCell($key, $cell);
+          $tableCell = new TableCell($key, $cell);
           // TODO - Dirty workarund to hide empty (null) values and headers
           if($cell === null){
-            $cell->addClass('hidden');
+            $tableCell->addClass('hidden');
           }
+          $cells[] = $tableCell;
         } else {
           // Array value, use by keys:
           $value = $cell['#value'];
