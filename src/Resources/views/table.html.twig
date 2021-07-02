@@ -1,5 +1,6 @@
 {% block table %}
-	<table {% if tabledata.attributes is defined and tabledata.attributes is not empty %} {{ tabledata.attributes|raw }} {% endif %}>
+  {% block table_before %}{% endblock %}
+	<table {% if id is not empty %}id="{{ id }}"{% endif %} {% if tabledata.attributes is defined and tabledata.attributes is not empty %} {{ tabledata.attributes|raw }} {% endif %}>
 		{% block thead %}
 			<thead>
         {% block thead_row %}
@@ -41,4 +42,5 @@
 			</tbody>
 		{% endblock %}
 	</table>
+  {% block table_after %}{% endblock %}
 {% endblock %}

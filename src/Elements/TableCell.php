@@ -30,6 +30,15 @@ class TableCell extends HtmlEntity {
    */
   private ?string $afterValueRaw = null;
 
+  /**
+   * Defines the cell as hidden.
+   * Helpfull to allow "pseudo" cells for
+   * data purposes.
+   *
+   * @var bool
+   */
+  private $hidden = false;
+
 
   public function __construct(string $key, ?string $value = null, ?HtmlAttributes $attributes = null) {
     $this->key = $key;
@@ -85,6 +94,7 @@ class TableCell extends HtmlEntity {
       'beforeValueRaw' => $this->beforeValueRaw,
       'afterValueRaw' => $this->afterValueRaw,
       'attributes' => $this->getAttributes()->toString(),
+      'hidden' => $this->hidden,
     ];
 
     return $result;
@@ -130,6 +140,18 @@ class TableCell extends HtmlEntity {
    */
   public function setBeforeValueRaw($beforeValueRaw) {
     $this->beforeValueRaw = $beforeValueRaw;
+
+    return $this;
+  }
+
+  /**
+   * Set the cell hidden.
+   *
+   * @return  self
+   */
+  public function setHidden(bool $hidden)
+  {
+    $this->hidden = $hidden;
 
     return $this;
   }

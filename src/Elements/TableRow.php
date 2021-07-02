@@ -33,7 +33,7 @@ class TableRow extends HtmlEntity {
           $tableCell = new TableCell($key, $cell);
           // TODO - Dirty workarund to hide empty (null) values and headers
           if($cell === null){
-            $tableCell->addClass('hidden');
+            $tableCell->setHidden(true);
           }
           $cells[] = $tableCell;
         } else {

@@ -182,7 +182,7 @@ class Table extends HtmlEntity {
      * @param stromg $class The class name to hide the cell.
      * @return Table
      */
-    public function hideHeaderlessColumns($class = 'hidden'): Table {
+    public function hideHeaderlessColumns(): Table {
         $cellKeys = $this->header->getCellKeys();
         if (!empty($this->rows) && !empty($cellKeys)) {
             foreach ($this->rows as $row) {
@@ -190,7 +190,7 @@ class Table extends HtmlEntity {
                 foreach ($cells as $cell) {
                     $cellKey = $cell->getKey();
                     if (!in_array($cellKey, $cellKeys)) {
-                        $cell->addClass($class);
+                        $cell->setHidden(true);
                     }
                 }
             }
