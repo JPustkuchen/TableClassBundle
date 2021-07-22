@@ -56,9 +56,9 @@ class TableCell extends HtmlEntity {
   /**
    * Set the value of key.
    *
-   * @return  self
+   * @return static
    */
-  private function setKey($key) {
+  private function setKey($key): static {
     $this->key = $key;
 
     return $this;
@@ -74,9 +74,9 @@ class TableCell extends HtmlEntity {
   /**
    * Set the value of value.
    *
-   * @return  self
+   * @return  static
    */
-  public function setValue($value) {
+  public function setValue($value): static {
     $this->value = $value;
 
     return $this;
@@ -89,7 +89,7 @@ class TableCell extends HtmlEntity {
    */
   public function toArray() {
     // TODO - make class changable from outside:
-    if($this->hidden){
+    if ($this->hidden) {
       // Add class 'hidden' if this is hidden:
       $this->getAttributes()->addClass('hidden');
     }
@@ -120,9 +120,9 @@ class TableCell extends HtmlEntity {
    * Use with care and not for user input!
    * This will not be auto-escaped!
    *
-   * @return  self
+   * @return  static
    */
-  public function setAfterValueRaw($afterValueRaw) {
+  public function setAfterValueRaw($afterValueRaw): static {
     $this->afterValueRaw = $afterValueRaw;
 
     return $this;
@@ -142,9 +142,9 @@ class TableCell extends HtmlEntity {
    * Use with care and not for user input!
    * This will not be auto-escaped!
    *
-   * @return  self
+   * @return static
    */
-  public function setBeforeValueRaw($beforeValueRaw) {
+  public function setBeforeValueRaw($beforeValueRaw): static {
     $this->beforeValueRaw = $beforeValueRaw;
 
     return $this;
@@ -153,10 +153,9 @@ class TableCell extends HtmlEntity {
   /**
    * Set the cell hidden.
    *
-   * @return  self
+   * @return  static
    */
-  public function setHidden(bool $hidden)
-  {
+  public function setHidden(bool $hidden): static {
     $this->hidden = $hidden;
 
     return $this;
@@ -167,8 +166,7 @@ class TableCell extends HtmlEntity {
    *
    * @return  bool
    */
-  public function isHidden()
-  {
+  public function isHidden() {
     return $this->hidden;
   }
 }

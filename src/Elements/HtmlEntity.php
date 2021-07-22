@@ -20,12 +20,11 @@ abstract class HtmlEntity {
    * Sets an attribute.
    *
    * @param string $name
-   * @param mixed] $value
-   * @return HtmlEntity
+   * @param mixed $value
+   * @return static
    */
-  public function setAttribute(string $name, $value): HtmlEntity{
+  public function setAttribute(string $name, $value): static{
     $this->getAttributes()->setAttribute($name, $value);
-
     return $this;
   }
 
@@ -33,9 +32,9 @@ abstract class HtmlEntity {
    * Adds all classes from array.
    *
    * @param array $classes
-   * @return HtmlEntity
+   * @return static
    */
-  public function addClassesFromArray(array $classes): HtmlEntity{
+  public function addClassesFromArray(array $classes): static{
     $this->getAttributes()->addClassesFromArray($classes);
 
     return $this;
@@ -46,11 +45,10 @@ abstract class HtmlEntity {
    * Adds a class.
    *
    * @param string $class
-   * @return HtmlEntity
+   * @return static
    */
-  public function addClass(string $class): HtmlEntity {
+  public function addClass(string $class): static {
     $this->getAttributes()->addClass($class);
-
     return $this;
   }
 
@@ -67,10 +65,10 @@ abstract class HtmlEntity {
    * Set attributes object.
    *
    * @param HtmlAttributes $attributes
+   * @return static
    */
-  protected function setAttributes(HtmlAttributes $attributes): HtmlEntity {
+  protected function setAttributes(HtmlAttributes $attributes): static {
     $this->attributes = $attributes;
-
     return $this;
   }
 }

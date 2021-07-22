@@ -66,9 +66,9 @@ class TableRow extends HtmlEntity {
   /**
    * Set the value of cells
    *
-   * @return  self
+   * @return static
    */
-  public function setCells(array $cells): TableRow {
+  public function setCells(array $cells): static {
     $this->cells = [];
     if (!empty($cells)) {
       foreach ($cells as $cell) {
@@ -82,9 +82,9 @@ class TableRow extends HtmlEntity {
    * Adds a cell by its unique key.
    *
    * @param TableCell $cell
-   * @return TableRow
+   * @return static
    */
-  public function addCell(TableCell $cell): TableRow {
+  public function addCell(TableCell $cell): static {
     $cellKey = $cell->getKey();
     if ($this->hasCell($cellKey)) {
       throw new Exception("Cell with Key {$cellKey} already exists in this row. Can not be added twice!");
@@ -98,15 +98,21 @@ class TableRow extends HtmlEntity {
    *
    * @param string] $key
    * @param TableCell $cell
-   * @return TableRow
+   * @return static
    */
-  protected function setCell(string $key, TableCell $cell): TableRow {
+  protected function setCell(string $key, TableCell $cell): static {
     $this->cells[] = $cell;
     $this->cellsByKey[$key] = $cell;
     return $this;
   }
 
-  public function removeCell(string $key): TableRow {
+  /**
+   * Removes a cell by $key.
+   *
+   * @param string $key
+   * @return static
+   */
+  public function removeCell(string $key): static {
     foreach ($this->cells as $index => $cell) {
       if ($cell->getKey() === $key) {
         unset($this->cellsByKey[$key]);

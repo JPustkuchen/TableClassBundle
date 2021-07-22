@@ -29,7 +29,7 @@ class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
   /**
    * Returns attribute by name.
    *
-   * @param string] $name
+   * @param string $name
    */
   public function getAttribute(string $name) {
     return $this->offsetGet($name);
@@ -48,12 +48,11 @@ class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
    * Sets an attribute.
    *
    * @param string $name
-   * @param mixed] $value
-   * @return HtmlAttributes
+   * @param mixed $value
+   * @return static
    */
-  public function setAttribute(string $name, $value): HtmlAttributes {
-    $this
-      ->offsetSet($name, $value);
+  public function setAttribute(string $name, $value): static {
+    $this->offsetSet($name, $value);
     return $this;
   }
 
@@ -61,9 +60,9 @@ class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
    * Removes an attribute.
    *
    * @param string $name
-   * @return HtmlAttributes
+   * @return static
    */
-  public function removeAttribute(string $name): HtmlAttributes {
+  public function removeAttribute(string $name): static {
     $this->offsetUnset($name);
     return $this;
   }
@@ -91,11 +90,11 @@ class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
    * Adds all classes from array.
    *
    * @param array $classes
-   * @return HtmlAttributes
+   * @return static
    */
-  public function addClassesFromArray(array $classes): HtmlAttributes{
-    if(!empty($classes)){
-      foreach($classes as $class){
+  public function addClassesFromArray(array $classes): static {
+    if (!empty($classes)) {
+      foreach ($classes as $class) {
         $this->addClass($class);
       }
     }
@@ -107,9 +106,9 @@ class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
    * Adds a class.
    *
    * @param string $class
-   * @return HtmlAttributes
+   * @return static
    */
-  public function addClass(string $class): HtmlAttributes {
+  public function addClass(string $class): static {
     $classes = $this->getClasses();
     if (empty($classes)) {
       $classes = [];
@@ -124,9 +123,9 @@ class HtmlAttributes implements \ArrayAccess, \IteratorAggregate {
    * Removes a class.
    *
    * @param string $class
-   * @return HtmlAttributes
+   * @return static
    */
-  public function removeClass(string $class): HtmlAttributes {
+  public function removeClass(string $class): static {
     if ($this->hasClass($class)) {
       $classes = $this->getClasses();
       unset($classes[$class]);

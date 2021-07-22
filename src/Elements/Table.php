@@ -46,9 +46,9 @@ class Table extends HtmlEntity {
      * Creates the table header from an indexed array.
      *
      * @param array $headerArray
-     * @return Table
+     * @return static
      */
-    public function setHeaderFromArray(array $headerArray): Table {
+    public function setHeaderFromArray(array $headerArray): static {
         $headerTableRow = TableRow::createFromArray($headerArray);
         // Hide rows with empty title (===null)
         $headerTableRow->iterateCells(function (TableCell $cell, $index) {
@@ -65,9 +65,9 @@ class Table extends HtmlEntity {
      * Adds rows from an array of indexed arrays.
      *
      * @param array $rowsArray
-     * @return Table
+     * @return static
      */
-    public function addRowsFromArray(array $rowsArray): Table {
+    public function addRowsFromArray(array $rowsArray): static {
         if (!empty($rowsArray)) {
             foreach ($rowsArray as $rowArray) {
                 $this->addRow(TableRow::createFromArray($rowArray));
@@ -80,9 +80,9 @@ class Table extends HtmlEntity {
      * Adds a single row.
      *
      * @param TableRow $row
-     * @return Table
+     * @return static
      */
-    public function addRow(TableRow $row): Table {
+    public function addRow(TableRow $row): static {
         $this->rows[] = $row;
         return $this;
     }
@@ -91,9 +91,9 @@ class Table extends HtmlEntity {
      * Sets the header.
      *
      * @param TableRow $header
-     * @return Table
+     * @return static
      */
-    public function setHeader(TableRow $header): Table {
+    public function setHeader(TableRow $header): static {
         $this->header = $header;
         return $this;
     }
@@ -102,9 +102,9 @@ class Table extends HtmlEntity {
      * Sets the rows.
      *
      * @param array $rows
-     * @return Table
+     * @return static
      */
-    public function setRows(array $rows = []): Table {
+    public function setRows(array $rows = []): static {
         $this->rows = [];
         if (!empty($rows)) {
             foreach ($rows as $row) {
@@ -161,9 +161,9 @@ class Table extends HtmlEntity {
      *
      * Only useful if header was set before.
      *
-     * @return Table
+     * @return static
      */
-    public function removeHeaderlessColumns(): Table {
+    public function removeHeaderlessColumns(): static {
         $cellKeys = $this->header->getCellKeys();
         if (!empty($this->rows) && !empty($cellKeys)) {
             foreach ($this->rows as $row) {
@@ -188,9 +188,9 @@ class Table extends HtmlEntity {
      *
      * This
      * @param stromg $class The class name to hide the cell.
-     * @return Table
+     * @return static
      */
-    public function hideHeaderlessColumns(): Table {
+    public function hideHeaderlessColumns(): static {
         // Exclude hidden (value === null) header cells.
         $cellKeys = $this->header->getCellKeys(true);
         if (!empty($this->rows) && !empty($cellKeys)) {
